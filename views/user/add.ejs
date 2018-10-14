@@ -1,0 +1,31 @@
+<%- include ../layouts/header %>
+
+<% if(messages.error) { %>
+	<p style="color: red;"><%- messages.error %></p>
+<% } %>
+<% if(messages.success) { %>
+	<p style="color: green;"><%- messages.success %></p>
+<% } %>
+
+<form action="/users/add" method="post" name="formuser">
+	<table>
+		<tr>
+			<td>Username</td>
+			<td><input type="text" autocomplete="off" name="username"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="text" autocomplete="off" name="password"></td>
+		</tr>
+		<tr>
+			<td>Hak Akses</td>
+			<td><input type="text" autocomplete="off" name="hak_akses"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" name="submit" value="Add"></td>
+		</tr>						
+	</table>
+</form>
+
+<%- include ../layouts/footer %>

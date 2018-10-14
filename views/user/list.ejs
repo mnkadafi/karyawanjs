@@ -1,0 +1,35 @@
+<%- include ../layouts/header %>
+<%- include ../layouts/navigation %>
+
+<table border=1>
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Hak Akses</th>
+			<th>Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if(data){ %>
+			<% data.forEach(function(users){ %>
+				<tr>
+					<td><%= users.username %></td>
+					<td><%= users.password %></td>
+					<td><%= users.hak_akses %></td>
+					<td>
+						<div style="float:left">
+							<a href="/users/edit/<%= users.id %>">Edit</a>&nbsp;
+							<form method="post" action="/users/delete/<%= users.id %>" style="float: right;">
+								<input type="submit" name="delete" value="Delete" onclick="return confirm('Apakah anda yakin ingin menghapus?')">
+								<input type="hidden" name="_method" value="DELETE">
+							</form>
+						</div>
+					</td>
+				</tr>
+			<% }) %>
+		<% } %>
+	</tbody>
+</table>
+
+<%- include ../layouts/footer %>
